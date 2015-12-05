@@ -1,0 +1,7 @@
+name: RPG
+version: 1.0.0a
+main: ru.tec.main.Main
+commands:
+  rpg:
+    description: RPG commands
+    usage: /<command> args
