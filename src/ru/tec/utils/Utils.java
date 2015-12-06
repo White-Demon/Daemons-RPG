@@ -3,7 +3,7 @@ package ru.tec.utils;
 import java.util.HashMap;
 
 import ru.tec.core.Faction;
-import ru.tec.database.*;
+import ru.tec.database.User;
 
 /**
  * 

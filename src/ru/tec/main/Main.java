@@ -63,7 +63,7 @@ public class Main extends JavaPlugin {
 						if(Utils.cacheFaction.get(user.getFaction()).getLeader().equals(player))
 						{
 							Utils.cacheFaction.get(user.getFaction()).addPlayer(args[1]);
-							player.sendMessage(ChatColor.GREEN + "[RPG] Игрок приглашен в ваш клан.");
+							player.sendMessage(ChatColor.GREEN + "[RPG] РРіСЂРѕРє РїСЂРёРіР»Р°С€РµРЅ РІ РІР°С€ РєР»Р°РЅ.");
 							return true;
 						}
 					}
@@ -71,7 +71,7 @@ public class Main extends JavaPlugin {
 					if(args[0].equals("spawn"))
 					{
 						player.teleport(Utils.cacheFaction.get(user.getFaction()).getWorld().getSpawnLocation());
-						player.sendMessage(ChatColor.GREEN + "[RPG] Вы телепортированы в мир клана.");
+						player.sendMessage(ChatColor.GREEN + "[RPG] Р’С‹ С‚РµР»РµРїРѕСЂС‚РёСЂРѕРІР°РЅС‹ РІ РјРёСЂ РєР»Р°РЅР°.");
 					}
 					
 					if(args[0].equals("create"))
@@ -84,15 +84,15 @@ public class Main extends JavaPlugin {
 								Faction faction = new Faction();
 								faction.newFaction(args[1], player, Bukkit.createWorld(new WorldCreator(args[1])));
 								player.teleport(faction.getWorld().getSpawnLocation());
-								player.sendMessage(ChatColor.GREEN + "[RPG] Ваш клан успешно создан.");
+								player.sendMessage(ChatColor.GREEN + "[RPG] Р’Р°С€ РєР»Р°РЅ СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ.");
 								return true;
 							}else{
-								player.sendMessage(ChatColor.RED + "[RPG] Такой клан уже создан.");
+								player.sendMessage(ChatColor.RED + "[RPG] РўР°РєРѕР№ РєР»Р°РЅ СѓР¶Рµ СЃРѕР·РґР°РЅ.");
 								return true;
 							}
 						}else{
-							player.sendMessage(ChatColor.RED + "[RPG] У вас недостаточно средств для создания клана");
-							player.sendMessage(ChatColor.RED + "[RPG] Вам не достаточно еще средств:" + (Config.countFaction - user.getMoney()));
+							player.sendMessage(ChatColor.RED + "[RPG] РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РєР»Р°РЅР°");
+							player.sendMessage(ChatColor.RED + "[RPG] Р’Р°Рј РЅРµ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РµС‰Рµ СЃСЂРµРґСЃС‚РІ:" + (Config.countFaction - user.getMoney()));
 							return true;
 						}
 					}
@@ -105,7 +105,7 @@ public class Main extends JavaPlugin {
 				{
 					if(args[0].equals("balance"))
 					{
-						player.sendMessage(ChatColor.GREEN  + "[RPG] Ваш баланс:" + user.getMoney() + " золотых.");
+						player.sendMessage(ChatColor.GREEN  + "[RPG] Р’Р°С€ Р±Р°Р»Р°РЅСЃ:" + user.getMoney() + " Р·РѕР»РѕС‚С‹С….");
 						return true;
 					}
 					if(args[0].equals("rating"))
@@ -114,13 +114,13 @@ public class Main extends JavaPlugin {
 						{
 							// TODO a top rating
 						}else{
-							player.sendMessage(ChatColor.GREEN + "[RPG] Ваш PVE рейтинг:" + user.getRatingPVE() );
-							player.sendMessage(ChatColor.GREEN + "[RPG] Ваш PVP рейтинг:" + user.getRatingPVP());
+							player.sendMessage(ChatColor.GREEN + "[RPG] Р’Р°С€ PVE СЂРµР№С‚РёРЅРі:" + user.getRatingPVE() );
+							player.sendMessage(ChatColor.GREEN + "[RPG] Р’Р°С€ PVP СЂРµР№С‚РёРЅРі:" + user.getRatingPVP());
 							return true;
 						}
 					}
 				}else{
-					player.sendMessage(ChatColor.RED + "[RPG] Вы не ввели аргументы команды.");
+					player.sendMessage(ChatColor.RED + "[RPG] Р’С‹ РЅРµ РІРІРµР»Рё Р°СЂРіСѓРјРµРЅС‚С‹ РєРѕРјР°РЅРґС‹.");
 					return false;
 				}
 			}

@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import ru.tec.main.Main;
 
 /**
- * Класс рабочий
+ * РљР»Р°СЃСЃ СЂР°Р±РѕС‡РёР№
  * @author White2Demon
  *
  */
@@ -60,8 +60,8 @@ public class User implements Serializable{
 	}
 	
 	/**
-	 * Загрузка из сериализации
-	 * @param name - имя файла
+	 * Р—Р°РіСЂСѓР·РєР° РёР· СЃРµСЂРёР°Р»РёР·Р°С†РёРё
+	 * @param name - РёРјСЏ С„Р°Р№Р»Р°
 	 */
 	public static User load(String name)
 	{
@@ -87,7 +87,7 @@ public class User implements Serializable{
 
 	}
 	/**
-	 * Сохранение сериализации
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРµСЂРёР°Р»РёР·Р°С†РёРё
 	 * 
 	 */
 	public void save()
