@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 
 import ru.tec.main.Main;
+import ru.tec.utils.Utils;
 
 /**
  * Класс рабочий
@@ -29,8 +30,6 @@ public class User implements Serializable{
 	private int ratingPVP=0,ratingPVE=0;
 	
 	private String faction = null, invite = null;
-	
-	private boolean agree;
 	
 	public User(String name)
 	{
@@ -173,14 +172,7 @@ public class User implements Serializable{
 
 	public void setFaction(String faction) {
 		this.faction = faction;
-	}
-
-	public boolean isAgree() {
-		return agree;
-	}
-
-	public void setAgree(boolean agree) {
-		this.agree = agree;
+		Utils.cacheFaction.get(faction).addPlayer(this.name);
 	}
 
 	public String getInvite() {

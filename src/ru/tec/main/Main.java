@@ -32,6 +32,8 @@ public class Main extends JavaPlugin {
 		Config.load();
 		log.info("[RPG] Enabled plugin. [00005]");
 		
+		Utils.loadFaction();
+		
 		Bukkit.getPluginManager().registerEvents(new SpawnListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
 		
@@ -65,6 +67,15 @@ public class Main extends JavaPlugin {
 							Utils.cacheFaction.get(user.getFaction()).addPlayer(args[1]);
 							player.sendMessage(ChatColor.GREEN + "[RPG] Игрок приглашен в ваш клан.");
 							return true;
+						}
+					}
+					
+					if(args[0].equals("agree"))
+					{
+						if(user.getInvite() != null)
+						{
+							user.setFaction(user.getInvite());
+							user.setInvite(null);
 						}
 					}
 					

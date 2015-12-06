@@ -23,8 +23,7 @@ import ru.tec.main.Main;
  * 
  * @author White2Demon
  *
- *	Будем обрабатывать спавн мобов модернезированных
- *
+ * Обработка спавна мобов
  */
 public class SpawnListener implements Listener{
 	
@@ -32,7 +31,7 @@ public class SpawnListener implements Listener{
 	
 	/**
 	 * Главное событие
-	 * @param spawn - апи само подставит это
+	 * @param spawn 
 	 */
 	@EventHandler
 	public void onSpawn(EntitySpawnEvent spawn)

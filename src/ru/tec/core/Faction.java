@@ -16,6 +16,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import net.md_5.bungee.api.ChatColor;
 import ru.tec.database.User;
 import ru.tec.main.Main;
 import ru.tec.utils.Utils;
@@ -71,14 +72,21 @@ public class Faction implements Serializable{
 		this.location = location;
 	}
 	
-	public void addPlayer(String player)
+	public void addPlayer(String name)
 	{
-		this.player.add(Bukkit.getPlayer(player));
+		Player player = Bukkit.getPlayer(name);
+		
+		//User user = Utils.cache.get(player.getName());
+		
+		this.player.add(player);
+		
 	}
 	
-	public void delPlayer(String player)
+	public void delPlayer(String name)
 	{
-		this.player.remove(Bukkit.getPlayer(player));
+		Player player = Bukkit.getPlayer(name);
+		Utils.cache.get(player.getName()).setFaction(null);
+		this.player.remove(player);
 	}
 
 	public void war(Faction faction)
@@ -187,4 +195,8 @@ public class Faction implements Serializable{
 		return lead;
 	}
 	
+	public String getName()
+	{
+		return name;
+	}
 }
