@@ -16,13 +16,12 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import net.md_5.bungee.api.ChatColor;
 import ru.tec.database.User;
 import ru.tec.main.Main;
 import ru.tec.utils.Utils;
 
 /**
- * Класс для кланов
+ * РљР»Р°СЃСЃ РґР»СЏ РєР»Р°РЅРѕРІ
  * @author White2Demon
  *
  */
@@ -35,8 +34,8 @@ public class Faction implements Serializable{
 
 	private String name;
 	
-	private Player lead; // Глава клана
-	private World world; // Мир клана
+	private Player lead; // Р“Р»Р°РІР° РєР»Р°РЅР°
+	private World world; // РњРёСЂ РєР»Р°РЅР°
 	private Location location; // spawn
 	
 	private List<Player> player = new ArrayList<>();
@@ -148,7 +147,7 @@ public class Faction implements Serializable{
 
 	}
 	/**
-	 * Сохранение сериализации
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРµСЂРёР°Р»РёР·Р°С†РёРё
 	 * 
 	 */
 	public void save()

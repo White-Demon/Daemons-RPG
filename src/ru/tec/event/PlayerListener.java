@@ -1,6 +1,7 @@
 package ru.tec.event;
 
 import java.util.Random;
+import org.bukkit.ChatColor;
 
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
@@ -9,7 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import net.md_5.bungee.api.ChatColor;
 
 import ru.tec.database.User;
 import ru.tec.utils.Utils;
@@ -24,7 +24,7 @@ public class PlayerListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{
 		Player player = event.getPlayer();
-		player.sendMessage(ChatColor.GREEN  + "[RPG] Загружаем ваш аккаунт...");
+		player.sendMessage(ChatColor.GREEN  + "[RPG] Р—Р°РіСЂСѓР¶Р°РµРј РІР°С€ Р°РєРєР°СѓРЅС‚...");
 		
 		if(User.isUser(player.getName()))
 		{
@@ -33,7 +33,7 @@ public class PlayerListener implements Listener {
 			Utils.cache.put(player.getName(), new User(player.getName()));
 		}
 		
-		player.sendMessage(ChatColor.GREEN  + "[RPG] Ваш аккаунт успешно загружен!");
+		player.sendMessage(ChatColor.GREEN  + "[RPG] Р’Р°С€ Р°РєРєР°СѓРЅС‚ СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ!");
 		
 	}
 	
@@ -58,7 +58,7 @@ public class PlayerListener implements Listener {
 				user.addMoney(new Random().nextInt(10));
 				user.addRating(1, 2);
 				
-				event.getEntity().getKiller().sendMessage(ChatColor.GREEN + "[RPG] Вам начислили рейтинг и дали золото.");
+				event.getEntity().getKiller().sendMessage(ChatColor.GREEN + "[RPG] Р’Р°Рј РЅР°С‡РёСЃР»РёР»Рё СЂРµР№С‚РёРЅРі Рё РґР°Р»Рё Р·РѕР»РѕС‚Рѕ.");
 			}
 		}
 	}

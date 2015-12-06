@@ -13,11 +13,11 @@ public class Config {
 	
 	// Constants
 	
-	public static int countFaction; // Стоимость создания клана
-	public static int cessFaction; // Налог Клана
+	public static int countFaction; // РЎС‚РѕРёРјРѕСЃС‚СЊ СЃРѕР·РґР°РЅРёСЏ РєР»Р°РЅР°
+	public static int cessFaction; // РќР°Р»РѕРі РљР»Р°РЅР°
 	
 	/**
-	 * Загрузка конфига из файла
+	 * Р—Р°РіСЂСѓР·РєР° РєРѕРЅС„РёРіР° РёР· С„Р°Р№Р»Р°
 	 */
 	public static void load()
 	{
@@ -35,7 +35,7 @@ public class Config {
             Config.countFaction = Integer.parseInt(countFaction);
  
         } catch (IOException e) {
-            System.err.println("ОШИБКА: Файл свойств отсуствует!");
+            System.err.println("РћРЁРР‘РљРђ: Р¤Р°Р№Р» СЃРІРѕР№СЃС‚РІ РѕС‚СЃСѓСЃС‚РІСѓРµС‚!");
         }
 	}
 	

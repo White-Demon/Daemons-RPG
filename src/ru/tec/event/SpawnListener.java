@@ -23,7 +23,7 @@ import ru.tec.main.Main;
  * 
  * @author White2Demon
  *
- *	Будем обрабатывать спавн мобов модернезированных
+ *	Р‘СѓРґРµРј РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ СЃРїР°РІРЅ РјРѕР±РѕРІ РјРѕРґРµСЂРЅРµР·РёСЂРѕРІР°РЅРЅС‹С…
  *
  */
 public class SpawnListener implements Listener{
@@ -31,8 +31,8 @@ public class SpawnListener implements Listener{
 	private final Random rnd = new Random();
 	
 	/**
-	 * Главное событие
-	 * @param spawn - апи само подставит это
+	 * Р“Р»Р°РІРЅРѕРµ СЃРѕР±С‹С‚РёРµ
+	 * @param spawn - Р°РїРё СЃР°РјРѕ РїРѕРґСЃС‚Р°РІРёС‚ СЌС‚Рѕ
 	 */
 	@EventHandler
 	public void onSpawn(EntitySpawnEvent spawn)
@@ -106,19 +106,19 @@ public class SpawnListener implements Listener{
 		switch(id)
 		{
 			case 0:
-				zombie.setCustomName("Зомби" + ChatColor.AQUA + " [1 уровень]");
+				zombie.setCustomName("Р—РѕРјР±Рё" + ChatColor.AQUA + " [1 СѓСЂРѕРІРµРЅСЊ]");
 				zombie.getEquipment().setItemInHand(new ItemStack(Material.STONE_SWORD,1));
 				zombie.setVillager(true);
 			break;
 			case 1:
-				zombie.setCustomName("Беглый зомби" + ChatColor.GRAY + " [3 уровень]");
+				zombie.setCustomName("Р‘РµРіР»С‹Р№ Р·РѕРјР±Рё" + ChatColor.GRAY + " [3 СѓСЂРѕРІРµРЅСЊ]");
 				zombie.getEquipment().setItemInHand(new ItemStack(Material.IRON_SWORD,1));
 				zombie.getEquipment().setHelmet(new ItemStack(Material.IRON_HELMET,1));
 				zombie.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS,1));
 				zombie.setVillager(true);
 			break;
 			case 2:
-				zombie.setCustomName("Умный зомби" + ChatColor.YELLOW + " [6 уровень]");
+				zombie.setCustomName("РЈРјРЅС‹Р№ Р·РѕРјР±Рё" + ChatColor.YELLOW + " [6 СѓСЂРѕРІРµРЅСЊ]");
 				zombie.getEquipment().setItemInHand(new ItemStack(Material.IRON_SWORD,1));
 				zombie.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET,1));
 				zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS,1));
@@ -127,7 +127,7 @@ public class SpawnListener implements Listener{
 				zombie.setVillager(true);
 			break;
 			case 3:
-				zombie.setCustomName("Паразоид" + ChatColor.GOLD + " [9 уровень]");
+				zombie.setCustomName("РџР°СЂР°Р·РѕРёРґ" + ChatColor.GOLD + " [9 СѓСЂРѕРІРµРЅСЊ]");
 				zombie.getEquipment().setItemInHand(new ItemStack(Material.GOLD_SWORD,1));
 				zombie.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET,1));
 				zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS,1));
@@ -141,10 +141,10 @@ public class SpawnListener implements Listener{
 				ItemMeta met = bow.getItemMeta();
 				met.addEnchant(Enchantment.KNOCKBACK, 3 ,true);
 				met.addEnchant(Enchantment.FIRE_ASPECT,	 3, true);
-				met.setDisplayName(ChatColor.RED + "Лук огня Лорда.");
+				met.setDisplayName(ChatColor.RED + "Р›СѓРє РѕРіРЅСЏ Р›РѕСЂРґР°.");
 				bow.setItemMeta(met);
 				
-				zombie.setCustomName("Героидон" + ChatColor.BLACK + " [БОСС]");
+				zombie.setCustomName("Р“РµСЂРѕРёРґРѕРЅ" + ChatColor.BLACK + " [Р‘РћРЎРЎ]");
 				zombie.getEquipment().setItemInHand(bow);
 				zombie.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET,1));
 				zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS,1));
@@ -167,26 +167,26 @@ public class SpawnListener implements Listener{
 		switch(id)
 		{
 			case 0:
-				skeleton.setCustomName("Скелет " + ChatColor.AQUA + "[1 уровень]");
+				skeleton.setCustomName("РЎРєРµР»РµС‚ " + ChatColor.AQUA + "[1 СѓСЂРѕРІРµРЅСЊ]");
 				skeleton.getEquipment().setHelmet(new ItemStack(Material.IRON_HELMET,1));
 				skeleton.getEquipment().setBoots(new ItemStack(Material.LEATHER_BOOTS,1));
 			break;
 			case 1:
-				skeleton.setCustomName("Скелет мечник" + ChatColor.GRAY + "[4 уровень]");
+				skeleton.setCustomName("РЎРєРµР»РµС‚ РјРµС‡РЅРёРє" + ChatColor.GRAY + "[4 СѓСЂРѕРІРµРЅСЊ]");
 				skeleton.getEquipment().setHelmet(new ItemStack(Material.IRON_HELMET,1));
 				skeleton.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS,1));
 				skeleton.getEquipment().setChestplate(new ItemStack(Material.GOLD_CHESTPLATE,1));
 				skeleton.getEquipment().setItemInHand(new ItemStack(Material.IRON_SWORD,1));
 			break;
 			case 2:
-				skeleton.setCustomName("Скелет ордена " + ChatColor.YELLOW + "[8 уровень]");
+				skeleton.setCustomName("РЎРєРµР»РµС‚ РѕСЂРґРµРЅР° " + ChatColor.YELLOW + "[8 СѓСЂРѕРІРµРЅСЊ]");
 				skeleton.getEquipment().setHelmet(new ItemStack(Material.GOLD_HELMET,1));
 				skeleton.getEquipment().setBoots(new ItemStack(Material.GOLD_BOOTS,1));
 				skeleton.getEquipment().setChestplate(new ItemStack(Material.GOLD_CHESTPLATE,1));
 				skeleton.getEquipment().setItemInHand(new ItemStack(Material.GOLD_SWORD,1));
 			break;
 			case 3:
-				skeleton.setCustomName("Скелет ордена лучник " + ChatColor.GOLD + "[12 уровень]");
+				skeleton.setCustomName("РЎРєРµР»РµС‚ РѕСЂРґРµРЅР° Р»СѓС‡РЅРёРє " + ChatColor.GOLD + "[12 СѓСЂРѕРІРµРЅСЊ]");
 				skeleton.getEquipment().setHelmet(new ItemStack(Material.GOLD_HELMET,1));
 				skeleton.getEquipment().setBoots(new ItemStack(Material.GOLD_BOOTS,1));
 				skeleton.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS,1));
@@ -199,10 +199,10 @@ public class SpawnListener implements Listener{
 				ItemMeta met = bow.getItemMeta();
 				met.addEnchant(Enchantment.ARROW_KNOCKBACK, 2, true);
 				met.addEnchant(Enchantment.ARROW_FIRE,	 2, true);
-				met.setDisplayName(ChatColor.RED + "Лук огня Лорда.");
+				met.setDisplayName(ChatColor.RED + "Р›СѓРє РѕРіРЅСЏ Р›РѕСЂРґР°.");
 				bow.setItemMeta(met);
 				
-				skeleton.setCustomName("Лорд ордена " + ChatColor.BLACK + "[БОСС]");
+				skeleton.setCustomName("Р›РѕСЂРґ РѕСЂРґРµРЅР° " + ChatColor.BLACK + "[Р‘РћРЎРЎ]");
 				skeleton.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET,1));
 				skeleton.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS,1));
 				skeleton.getEquipment().setLeggings(new ItemStack(Material.GOLD_LEGGINGS,1));
@@ -223,12 +223,12 @@ public class SpawnListener implements Listener{
 		switch(id)
 		{
 			case 0:
-				ender.setCustomName("Темный " + ChatColor.AQUA +" [1 уровень]");
+				ender.setCustomName("РўРµРјРЅС‹Р№ " + ChatColor.AQUA +" [1 СѓСЂРѕРІРµРЅСЊ]");
 				ender.getEquipment().setHelmet(new ItemStack(Material.LEATHER_HELMET,1));
 				ender.getEquipment().setItemInHand(new ItemStack(Material.IRON_AXE,1));
 			break;
 			case 1:
-				ender.setCustomName("Темный ИО " + ChatColor.GRAY + "[3 уровень]");
+				ender.setCustomName("РўРµРјРЅС‹Р№ РРћ " + ChatColor.GRAY + "[3 СѓСЂРѕРІРµРЅСЊ]");
 				ender.getEquipment().setHelmet(new ItemStack(Material.LEATHER_HELMET,1));
 				ender.getEquipment().setItemInHand(new ItemStack(Material.IRON_AXE,1));
 				ender.getEquipment().setLeggings(new ItemStack(Material.IRON_LEGGINGS,1));
