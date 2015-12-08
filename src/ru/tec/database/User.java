@@ -1,13 +1,6 @@
 package ru.tec.database;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.logging.Level;
 
 import ru.tec.main.Main;
 import ru.tec.utils.Utils;
@@ -15,6 +8,7 @@ import ru.tec.utils.Utils;
 /**
  * Класс рабочий
  * @author White2Demon
+ * @author DmitriyMX
  *
  */
 public class User implements Serializable{
@@ -34,81 +28,6 @@ public class User implements Serializable{
 	public User(String name)
 	{
 		this.setName(name);
-	}
-	
-	public static boolean isUser(String name)
-	{
-		File file = new File("./users/" +name + ".data");
-		return file.isFile();
-	}
-	
-	public static void createDir()
-	{
-		File file = new File("./users");
-		if(file.isDirectory())
-		{
-			Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is true [00001]");
-		}else{
-			if(file.mkdir())
-			{
-				Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is created [00002]");
-			}else{
-				Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is nope created {EXCEPTION} [00003]");
-			}
-		}
-	}
-	
-	/**
-	 * Загрузка из сериализации
-	 * @param name - имя файла
-	 */
-	public static User load(String name)
-	{
-		
-		createDir();
-		
-		User obj = null;
-			try {
-	            FileInputStream fis = new FileInputStream("./users/" +name + ".data");
-	            ObjectInputStream ois = new ObjectInputStream(fis);
-	            obj = (User) ois.readObject();
-	            ois.close();
-	            fis.close();
-	        } catch (IOException i) {
-	            i.printStackTrace();
-	
-	        } catch (ClassNotFoundException c) {
-	            System.out.println("CompanyInfoSerializeble class not found");
-	            c.printStackTrace();
-	        }
-		
-		return obj;
-
-	}
-	/**
-	 * Сохранение сериализации
-	 * 
-	 */
-	public void save()
-	{
-		createDir();
-		
-		if(name != null)
-		{
-			
-			try {
-	            FileOutputStream fos = new FileOutputStream("./users/" + name + ".data");
-	            ObjectOutputStream oos = new ObjectOutputStream(fos);
-	            oos.writeObject(this); 
-	            oos.close();
-	            fos.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		}
-		else{
-			throw new NullPointerException("Name => null !!! This bug"); 
-		}
 	}
 	
 	public void addMoney(int money)

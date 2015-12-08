@@ -4,14 +4,18 @@ import java.io.File;
 import java.util.HashMap;
 
 import ru.tec.core.Faction;
+import ru.tec.database.FileStorage;
+import ru.tec.database.IStorage;
 import ru.tec.database.User;
 
 /**
  * 
  * @author White2Demon
+ * @author DmitriyMX
  *
  */
-public class Utils {	
+public class Utils {
+	private static IStorage storage;
 	
 	public static final HashMap<String,User> cache = new HashMap<>();
 	
@@ -23,11 +27,17 @@ public class Utils {
 		
 		for(int i=0;i<list.listFiles().length;++i)
 		{
-			cacheFaction.put(Faction.load(list.listFiles()[i].getName()).getName(), Faction.load(list.listFiles()[i].getName()));
+			cacheFaction.put(getStorage().loadFaction(list.listFiles()[i].getName()).getName(), getStorage().loadFaction(list.listFiles()[i].getName()));
 			
 		}
 		
 	}
 	
+	public static IStorage getStorage() {
+		if (storage == null) {
+			storage = new FileStorage();
+		}
 
+		return storage;
+	}
 }

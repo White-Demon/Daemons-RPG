@@ -90,7 +90,7 @@ public class Main extends JavaPlugin {
 						if(user.getMoney() >= Config.countFaction)
 						{
 							// args[1] = name faction
-							if(!Faction.isFaction(args[1]))
+							if(!Utils.getStorage().existsFaction(args[1]))
 							{
 								Faction faction = new Faction();
 								faction.newFaction(args[1], player, Bukkit.createWorld(new WorldCreator(args[1])));
