@@ -77,7 +77,7 @@ public class FileStorage implements IStorage {
     }
 
     @Override
-    public void saveFaction(User user) {
+    public void saveUser(User user) {
         Preconditions.checkNotNull(user, "Name => null !!! This bug");
 
         init();

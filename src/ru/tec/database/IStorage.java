@@ -24,7 +24,7 @@ public interface IStorage extends Serializable{
      * Сериализация игрока
      * @param user данные по игроку
      */
-    void saveFaction(User user);
+    void saveUser(User user);
 
     /**
      * Существует ли игрок в базе
