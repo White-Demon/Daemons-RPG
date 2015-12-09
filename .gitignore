@@ -50,3 +50,20 @@ Temporary Items
 nbproject
 dist
 build.xml
+
+# IntelliJ IDEA IDE
+.idea/
+out/
+*.iml
+*.ipr
+*.iws
+*.ids
+
+# Gradle
+.gradle/
+build/
+build.gradle
+settings.gradle
+
+# Other
+lib/
