@@ -59,4 +59,9 @@ public interface IStorage extends Serializable{
      * @param name
      */
     void deleteFaction(String name);
+
+    /**
+     * Безопасное отключение хранилища
+     */
+    void close();
 }

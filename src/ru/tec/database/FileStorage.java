@@ -151,4 +151,9 @@ public class FileStorage implements IStorage {
             file.delete();
         }
     }
+
+    @Override
+    public void close() {
+        // ignore
+    }
 }
