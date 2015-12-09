@@ -7,6 +7,7 @@ import ru.tec.core.Faction;
 import ru.tec.database.FileStorage;
 import ru.tec.database.IStorage;
 import ru.tec.core.User;
+import ru.tec.database.SqliteStorage;
 
 /**
  * 
@@ -35,7 +36,11 @@ public class Utils {
 	
 	public static IStorage getStorage() {
 		if (storage == null) {
-			storage = new FileStorage();
+			if (Config.typeStorage.equals("sqlite")) {
+				storage = new SqliteStorage();
+			} else { // or Config.typeStorage.equals("file")
+				storage = new FileStorage();
+			}
 		}
 
 		return storage;

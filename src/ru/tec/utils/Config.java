@@ -15,6 +15,7 @@ public class Config {
 	
 	public static int countFaction; // Стоимость создания клана
 	public static int cessFaction; // Налог Клана
+    public static String typeStorage; // Тип хранилища (file, sqlite)
 	
 	/**
 	 * Загрузка конфига из файла
@@ -30,13 +31,13 @@ public class Config {
  
             String countFaction = property.getProperty("faction.count");
             String cessFaction = property.getProperty("faction.cess");
-            
+
             Config.cessFaction = Integer.parseInt(cessFaction);
             Config.countFaction = Integer.parseInt(countFaction);
- 
+
+            Config.typeStorage = property.getProperty("typeStorage").toLowerCase();
         } catch (IOException e) {
             System.err.println("ОШИБКА: Файл свойств отсуствует!");
         }
 	}
-	
 }
