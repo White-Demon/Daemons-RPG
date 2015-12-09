@@ -1,6 +1,7 @@
 package ru.tec.database;
 
 import ru.tec.core.Faction;
+import ru.tec.core.User;
 
 import java.io.Serializable;
 
@@ -58,4 +59,9 @@ public interface IStorage extends Serializable{
      * @param name
      */
     void deleteFaction(String name);
+
+    /**
+     * Безопасное отключение хранилища
+     */
+    void close();
 }

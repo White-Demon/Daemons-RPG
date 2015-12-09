@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 import ru.tec.core.Faction;
-import ru.tec.database.User;
+import ru.tec.core.User;
 import ru.tec.event.PlayerListener;
 import ru.tec.event.SpawnListener;
 import ru.tec.utils.Config;

@@ -2,6 +2,7 @@ package ru.tec.database;
 
 import com.google.common.base.Preconditions;
 import ru.tec.core.Faction;
+import ru.tec.core.User;
 import ru.tec.main.Main;
 
 import java.io.*;
@@ -149,5 +150,10 @@ public class FileStorage implements IStorage {
         {
             file.delete();
         }
+    }
+
+    @Override
+    public void close() {
+        // ignore
     }
 }
