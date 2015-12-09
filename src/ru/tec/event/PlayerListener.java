@@ -43,7 +43,7 @@ public class PlayerListener implements Listener {
 	{
 		Player player = event.getPlayer();
 
-		Utils.getStorage().saveFaction(Utils.cache.get(player.getName()));
+		Utils.getStorage().saveUser(Utils.cache.get(player.getName()));
 		Utils.cache.remove(player.getName());
 		
 	}
