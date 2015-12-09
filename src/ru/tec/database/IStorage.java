@@ -1,6 +1,7 @@
 package ru.tec.database;
 
 import ru.tec.core.Faction;
+import ru.tec.core.User;
 
 import java.io.Serializable;
 

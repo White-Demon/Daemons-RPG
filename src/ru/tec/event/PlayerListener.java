@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import ru.tec.database.User;
+import ru.tec.core.User;
 import ru.tec.utils.Utils;
 /**
  * 

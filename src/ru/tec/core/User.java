@@ -1,4 +1,4 @@
-package ru.tec.database;
+package ru.tec.core;
 
 import java.io.Serializable;
 

@@ -9,7 +9,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import ru.tec.database.User;
 import ru.tec.utils.Utils;
 
 /**

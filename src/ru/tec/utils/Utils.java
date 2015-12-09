@@ -6,7 +6,7 @@ import java.util.HashMap;
 import ru.tec.core.Faction;
 import ru.tec.database.FileStorage;
 import ru.tec.database.IStorage;
-import ru.tec.database.User;
+import ru.tec.core.User;
 
 /**
  * 
