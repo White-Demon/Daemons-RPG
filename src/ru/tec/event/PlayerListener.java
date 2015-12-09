@@ -16,19 +16,20 @@ import ru.tec.utils.Utils;
 /**
  * 
  * @author White2Demon
+ * @author DmitriyMX
  *
  */
 public class PlayerListener implements Listener {
-	
+
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{
 		Player player = event.getPlayer();
 		player.sendMessage(ChatColor.GREEN  + "[RPG] Загружаем ваш аккаунт...");
 		
-		if(User.isUser(player.getName()))
+		if(Utils.getStorage().existsUser(player.getName()))
 		{
-			Utils.cache.put(player.getName(), User.load(player.getName()));
+			Utils.cache.put(player.getName(), Utils.getStorage().loadUser(player.getName()));
 		}else{
 			Utils.cache.put(player.getName(), new User(player.getName()));
 		}
@@ -41,8 +42,8 @@ public class PlayerListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent event)
 	{
 		Player player = event.getPlayer();
-		
-		Utils.cache.get(player.getName()).save();
+
+		Utils.getStorage().saveFaction(Utils.cache.get(player.getName()));
 		Utils.cache.remove(player.getName());
 		
 	}
