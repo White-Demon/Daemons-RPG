@@ -31,8 +31,7 @@ public class SqliteStorage implements IStorage {
 
             is_init = true;
         } catch (ClassNotFoundException | SQLException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error sqlite init {EXCEPTION} [00100]");
-            e.printStackTrace();
+            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error sqlite init {EXCEPTION} [00100]", e);
         }
     }
 
@@ -41,10 +40,8 @@ public class SqliteStorage implements IStorage {
         init();
 
         User user = null;
-
-        try {
-            String sql = "SELECT bindata FROM `user` WHERE name LIKE ? LIMIT 1";
-            PreparedStatement statement = db.prepareStatement(sql);
+        String sql = "SELECT bindata FROM `user` WHERE name LIKE ? LIMIT 1";
+        try (PreparedStatement statement = db.prepareStatement(sql)) {
             statement.setString(1, name);
             ResultSet result = statement.executeQuery();
 
@@ -56,17 +53,15 @@ public class SqliteStorage implements IStorage {
             }
 
             result.close();
-            statement.close();
         } catch (SQLException | IOException | ClassNotFoundException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error load user {EXCEPTION} [00101]");
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Error load user {EXCEPTION} [00101]", e);
         }
 
         return user;
     }
 
     @Override
-    public void saveFaction(User user) {
+    public void saveUser(User user) {
         Preconditions.checkNotNull(user, "Name => null !!! This bug");
         init();
 
@@ -86,28 +81,21 @@ public class SqliteStorage implements IStorage {
             statement.close();
             bais.close();
         } catch (SQLException | IOException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error save user {EXCEPTION} [00102]");
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Error save user {EXCEPTION} [00102]", e);
         }
     }
 
     @Override
     public boolean existsUser(String name) {
         boolean exists = false;
-
-        try {
-            String sql = "SELECT name FROM `user` WHERE name LIKE ? LIMIT 1";
-            PreparedStatement statement = db.prepareStatement(sql);
+        String sql = "SELECT name FROM `user` WHERE name LIKE ? LIMIT 1";
+        try (PreparedStatement statement = db.prepareStatement(sql)) {
             statement.setString(1, name);
             ResultSet result = statement.executeQuery();
-
             exists = result.next();
-
             result.close();
-            statement.close();
         } catch (SQLException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error load user {EXCEPTION} [00103]");
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Error load user {EXCEPTION} [00103]", e);
         }
 
         return exists;
@@ -118,10 +106,8 @@ public class SqliteStorage implements IStorage {
         init();
 
         Faction faction = null;
-
-        try {
-            String sql = "SELECT bindata FROM `faction` WHERE name LIKE ? LIMIT 1";
-            PreparedStatement statement = db.prepareStatement(sql);
+        String sql = "SELECT bindata FROM `faction` WHERE name LIKE ? LIMIT 1";
+        try (PreparedStatement statement = db.prepareStatement(sql)) {
             statement.setString(1, name);
             ResultSet result = statement.executeQuery();
 
@@ -133,10 +119,8 @@ public class SqliteStorage implements IStorage {
             }
 
             result.close();
-            statement.close();
         } catch (SQLException | IOException | ClassNotFoundException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error load faction {EXCEPTION} [00104]");
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Error load faction {EXCEPTION} [00104]", e);
         }
 
         return faction;
@@ -163,44 +147,33 @@ public class SqliteStorage implements IStorage {
             statement.close();
             bais.close();
         } catch (SQLException | IOException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error save faction {EXCEPTION} [00105]");
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Error save faction {EXCEPTION} [00105]", e);
         }
     }
 
     @Override
     public boolean existsFaction(String name) {
         boolean exists = false;
-
-        try {
-            String sql = "SELECT name FROM `faction` WHERE name LIKE ? LIMIT 1";
-            PreparedStatement statement = db.prepareStatement(sql);
+        String sql = "SELECT name FROM `faction` WHERE name LIKE ? LIMIT 1";
+        try (PreparedStatement statement = db.prepareStatement(sql)) {
             statement.setString(1, name);
             ResultSet result = statement.executeQuery();
-
             exists = result.next();
-
             result.close();
-            statement.close();
         } catch (SQLException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error load faction {EXCEPTION} [00106]");
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Error load faction {EXCEPTION} [00106]", e);
         }
-
         return exists;
     }
 
     @Override
     public void deleteFaction(String name) {
-        try {
-            String sql = "DELETE FROM `faction` WHERE name LIKE ?";
-            PreparedStatement statement = db.prepareStatement(sql);
+        String sql = "DELETE FROM `faction` WHERE name LIKE ?";
+        try (PreparedStatement statement = db.prepareStatement(sql)) {
             statement.setString(1, name);
             statement.execute();
-            statement.close();
         } catch (SQLException e) {
-            Main.log.log(Level.INFO, "[RPG_CONSOLE] Error delete faction {EXCEPTION} [00107]");
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Error delete faction {EXCEPTION} [00107]", e);
         }
     }
 
@@ -211,7 +184,7 @@ public class SqliteStorage implements IStorage {
         try {
             db.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Failed to close connection [0010?]", e);
         } finally {
             db = null;
         }
