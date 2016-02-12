@@ -2,6 +2,7 @@ package ru.tec.core;
 
 import java.io.Serializable;
 
+import ru.tec.classes.IClass;
 import ru.tec.main.Main;
 import ru.tec.utils.Utils;
 
@@ -24,6 +25,8 @@ public class User implements Serializable{
 	private int ratingPVP=0,ratingPVE=0;
 	
 	private String faction = null, invite = null;
+	
+	private IClass iclass; // class
 	
 	public User(String name)
 	{
@@ -100,5 +103,13 @@ public class User implements Serializable{
 
 	public void setInvite(String invite) {
 		this.invite = invite;
+	}
+
+	public IClass getIClass() {
+		return iclass;
+	}
+
+	public void setIClass(IClass iclass) {
+		this.iclass = iclass;
 	}
 }

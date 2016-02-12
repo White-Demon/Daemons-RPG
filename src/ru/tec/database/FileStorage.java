@@ -12,9 +12,11 @@ import java.util.logging.Level;
  * @author DmitriyMX
  */
 public class FileStorage implements IStorage {
-    private boolean is_init = false;
-    private final File usersFile = new File("./users");
-    private final File factionsFile = new File("./faction");
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private boolean is_init = false;
 
     @Override
     public void init() {
@@ -24,33 +26,35 @@ public class FileStorage implements IStorage {
 
         // User dir
 
-        if(usersFile.isDirectory())
+        File file = new File("./users");
+        if(file.isDirectory())
         {
             is_init = true;
             Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is true [00001]");
         }else{
-            if(usersFile.mkdir())
+            if(file.mkdir())
             {
                 is_init = true;
                 Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is created [00002]");
             }else{
-                Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is not created {EXCEPTION} [00003]");
+                Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is nope created {EXCEPTION} [00003]");
             }
         }
 
         // Faction dir
 
-        if(factionsFile.isDirectory())
+        file = new File("./faction");
+        if(file.isDirectory())
         {
             is_init = true;
             Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is true [00010]");
         }else{
-            if(factionsFile.mkdir())
+            if(file.mkdir())
             {
                 is_init = true;
                 Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is created [00011]");
             }else{
-                Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is not created {EXCEPTION} [00012]");
+                Main.log.log(Level.INFO, "[RPG_CONSOLE] Dir is nope created {EXCEPTION} [00012]");
             }
         }
     }
@@ -60,12 +64,18 @@ public class FileStorage implements IStorage {
         init();
 
         User user = null;
-        try (FileInputStream fis = new FileInputStream(new File(usersFile, name + ".data"))) {
+        try {
+            FileInputStream fis = new FileInputStream("./users/" +name + ".data");
             ObjectInputStream ois = new ObjectInputStream(fis);
             user = (User) ois.readObject();
             ois.close();
-        } catch (IOException | ClassNotFoundException i) {
-            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Failed to load user", i);
+            fis.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+
+        } catch (ClassNotFoundException c) {
+            System.out.println("CompanyInfoSerializeble class not found");
+            c.printStackTrace();
         }
 
         return user;
@@ -73,22 +83,24 @@ public class FileStorage implements IStorage {
 
     @Override
     public void saveUser(User user) {
-        Preconditions.checkNotNull(user, "Name => null !!! This is bug");
+        Preconditions.checkNotNull(user, "Name => null !!! This bug");
 
         init();
 
-        try (FileOutputStream fos = new FileOutputStream(new File(usersFile, user.getName() + ".data"))) {
+        try {
+            FileOutputStream fos = new FileOutputStream("./users/" + user.getName() + ".data");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this);
             oos.close();
+            fos.close();
         } catch (IOException e) {
-            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Failed to save user", e);
+            e.printStackTrace();
         }
     }
 
     @Override
     public boolean existsUser(String name) {
-        File file = new File(usersFile, name + ".data");
+        File file = new File("./users/" +name + ".data");
         return (file.exists() && file.isFile());
     }
 
@@ -97,12 +109,18 @@ public class FileStorage implements IStorage {
         init();
 
         Faction faction = null;
-        try (FileInputStream fis = new FileInputStream(new File(factionsFile, name + ".data"))) {
+        try {
+            FileInputStream fis = new FileInputStream("./faction/" +name + ".data");
             ObjectInputStream ois = new ObjectInputStream(fis);
             faction = (Faction) ois.readObject();
             ois.close();
-        } catch (IOException | ClassNotFoundException i) {
-            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Failed to load faction", i);
+            fis.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+
+        } catch (ClassNotFoundException c) {
+            System.out.println("CompanyInfoSerializeble class not found");
+            c.printStackTrace();
         }
 
         return faction;
@@ -112,24 +130,26 @@ public class FileStorage implements IStorage {
     public void saveFaction(Faction faction) {
         Preconditions.checkNotNull(faction, "Name => null !!! This bug [FACTION] ");
 
-        try (FileOutputStream fos = new FileOutputStream(new File(factionsFile, faction.getName() + ".data"))) {
+        try {
+            FileOutputStream fos = new FileOutputStream("./faction/" + faction.getName() + ".data");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this);
             oos.close();
+            fos.close();
         } catch (IOException e) {
-            Main.log.log(Level.WARNING, "[RPG_CONSOLE] Failed to save faction", e);
+            e.printStackTrace();
         }
     }
 
     @Override
     public boolean existsFaction(String name) {
-        File file = new File(factionsFile, name + ".data");
+        File file = new File("./faction/" + name + ".data");
         return (file.exists() && file.isFile());
     }
 
     @Override
     public void deleteFaction(String name) {
-        File file = new File(factionsFile, name + ".data");
+        File file = new File("./faction/" + name + ".data");
         if(file.isFile())
         {
             file.delete();

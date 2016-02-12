@@ -247,6 +247,7 @@ public class SpawnListener implements Listener{
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void modSpider(Spider spider)
 	{
 		int id = rnd.nextInt(5);
@@ -274,6 +275,7 @@ public class SpawnListener implements Listener{
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void modZombiePig(PigZombie zp)
 	{
 		int id = rnd.nextInt(5);
@@ -301,6 +303,7 @@ public class SpawnListener implements Listener{
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void modDog(Wolf dog)
 	{
 		int id = rnd.nextInt(5);
